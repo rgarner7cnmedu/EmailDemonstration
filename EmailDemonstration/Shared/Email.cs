@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace EmailDemonstration.Shared
+﻿namespace EmailDemonstration.Shared
 {
     public class Email
     {

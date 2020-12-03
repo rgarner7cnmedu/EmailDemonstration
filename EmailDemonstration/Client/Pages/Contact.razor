@@ -1,0 +1,36 @@
+﻿@page "/Contact"
+@using EmailDemonstration.Shared
+@inject IEmailService emailService
+<h3>Contact</h3>
+
+<div>
+    <label for="message">Subject:</label>
+    <input id="subject" name="subject" type="text" @bind="email.Subject" />
+</div>
+
+<div>
+    <label for="message">Message:</label>
+<textarea id="message" name="message" rows="4" cols="50" @bind="email.Message">
+</textarea>
+</div>
+<div>
+    <label for="address">Your Email:</label>
+    <input id="address" name="address" type="text" @bind="email.Address" />
+</div>
+<button @onclick="Submit">Submit</button>
+
+<div>
+    @result
+</div>
+@code {
+    Email email= new Email();
+
+    string result="Please enter your message and click submit!";
+
+
+    private async Task Submit()
+    {
+        Console.WriteLine("Submit clicked");
+        await emailService.SendEmail(email);
+    }
+}

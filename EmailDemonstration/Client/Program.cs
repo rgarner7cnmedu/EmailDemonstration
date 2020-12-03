@@ -1,3 +1,5 @@
+using EmailDemonstration.Client.Services;
+using EmailDemonstration.Shared;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +27,7 @@ namespace EmailDemonstration.Client
             builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("EmailDemonstration.ServerAPI"));
 
             builder.Services.AddApiAuthorization();
-
+            builder.Services.AddScoped<IEmailService, EmailService>();
             await builder.Build().RunAsync();
         }
     }
